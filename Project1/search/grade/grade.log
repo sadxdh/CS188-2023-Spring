@@ -1,0 +1,243 @@
+Reading autograder files......
+    ./autograder.py
+    ./testParser.py
+    ./searchTestClasses.py
+    ./test_cases/CONFIG
+    ./test_cases/q1/CONFIG
+    ./test_cases/q1/graph_backtrack.solution
+    ./test_cases/q1/graph_backtrack.test
+    ./test_cases/q1/graph_bfs_vs_dfs.solution
+    ./test_cases/q1/graph_bfs_vs_dfs.test
+    ./test_cases/q1/graph_infinite.solution
+    ./test_cases/q1/graph_infinite.test
+    ./test_cases/q1/graph_manypaths.solution
+    ./test_cases/q1/graph_manypaths.test
+    ./test_cases/q1/pacman_1.solution
+    ./test_cases/q1/pacman_1.test
+    ./test_cases/q2/CONFIG
+    ./test_cases/q2/graph_backtrack.solution
+    ./test_cases/q2/graph_backtrack.test
+    ./test_cases/q2/graph_bfs_vs_dfs.solution
+    ./test_cases/q2/graph_bfs_vs_dfs.test
+    ./test_cases/q2/graph_infinite.solution
+    ./test_cases/q2/graph_infinite.test
+    ./test_cases/q2/graph_manypaths.solution
+    ./test_cases/q2/graph_manypaths.test
+    ./test_cases/q2/pacman_1.solution
+    ./test_cases/q2/pacman_1.test
+    ./test_cases/q3/CONFIG
+    ./test_cases/q3/graph_backtrack.solution
+    ./test_cases/q3/graph_backtrack.test
+    ./test_cases/q3/graph_bfs_vs_dfs.solution
+    ./test_cases/q3/graph_bfs_vs_dfs.test
+    ./test_cases/q3/graph_infinite.solution
+    ./test_cases/q3/graph_infinite.test
+    ./test_cases/q3/graph_manypaths.solution
+    ./test_cases/q3/graph_manypaths.test
+    ./test_cases/q3/ucs_0_graph.solution
+    ./test_cases/q3/ucs_0_graph.test
+    ./test_cases/q3/ucs_1_problemC.solution
+    ./test_cases/q3/ucs_1_problemC.test
+    ./test_cases/q3/ucs_2_problemE.solution
+    ./test_cases/q3/ucs_2_problemE.test
+    ./test_cases/q3/ucs_3_problemW.solution
+    ./test_cases/q3/ucs_3_problemW.test
+    ./test_cases/q3/ucs_4_testSearch.solution
+    ./test_cases/q3/ucs_4_testSearch.test
+    ./test_cases/q3/ucs_5_goalAtDequeue.solution
+    ./test_cases/q3/ucs_5_goalAtDequeue.test
+    ./test_cases/q4/astar_0.solution
+    ./test_cases/q4/astar_0.test
+    ./test_cases/q4/astar_1_graph_heuristic.solution
+    ./test_cases/q4/astar_1_graph_heuristic.test
+    ./test_cases/q4/astar_2_manhattan.solution
+    ./test_cases/q4/astar_2_manhattan.test
+    ./test_cases/q4/astar_3_goalAtDequeue.solution
+    ./test_cases/q4/astar_3_goalAtDequeue.test
+    ./test_cases/q4/CONFIG
+    ./test_cases/q4/graph_backtrack.solution
+    ./test_cases/q4/graph_backtrack.test
+    ./test_cases/q4/graph_manypaths.solution
+    ./test_cases/q4/graph_manypaths.test
+    ./test_cases/q5/CONFIG
+    ./test_cases/q5/corner_tiny_corner.solution
+    ./test_cases/q5/corner_tiny_corner.test
+    ./test_cases/q6/CONFIG
+    ./test_cases/q6/corner_sanity_1.solution
+    ./test_cases/q6/corner_sanity_1.test
+    ./test_cases/q6/corner_sanity_2.solution
+    ./test_cases/q6/corner_sanity_2.test
+    ./test_cases/q6/corner_sanity_3.solution
+    ./test_cases/q6/corner_sanity_3.test
+    ./test_cases/q6/medium_corners.solution
+    ./test_cases/q6/medium_corners.test
+    ./test_cases/q7/CONFIG
+    ./test_cases/q7/food_heuristic_1.solution
+    ./test_cases/q7/food_heuristic_1.test
+    ./test_cases/q7/food_heuristic_10.solution
+    ./test_cases/q7/food_heuristic_10.test
+    ./test_cases/q7/food_heuristic_11.solution
+    ./test_cases/q7/food_heuristic_11.test
+    ./test_cases/q7/food_heuristic_12.solution
+    ./test_cases/q7/food_heuristic_12.test
+    ./test_cases/q7/food_heuristic_13.solution
+    ./test_cases/q7/food_heuristic_13.test
+    ./test_cases/q7/food_heuristic_14.solution
+    ./test_cases/q7/food_heuristic_14.test
+    ./test_cases/q7/food_heuristic_15.solution
+    ./test_cases/q7/food_heuristic_15.test
+    ./test_cases/q7/food_heuristic_16.solution
+    ./test_cases/q7/food_heuristic_16.test
+    ./test_cases/q7/food_heuristic_17.solution
+    ./test_cases/q7/food_heuristic_17.test
+    ./test_cases/q7/food_heuristic_2.solution
+    ./test_cases/q7/food_heuristic_2.test
+    ./test_cases/q7/food_heuristic_3.solution
+    ./test_cases/q7/food_heuristic_3.test
+    ./test_cases/q7/food_heuristic_4.solution
+    ./test_cases/q7/food_heuristic_4.test
+    ./test_cases/q7/food_heuristic_5.solution
+    ./test_cases/q7/food_heuristic_5.test
+    ./test_cases/q7/food_heuristic_6.solution
+    ./test_cases/q7/food_heuristic_6.test
+    ./test_cases/q7/food_heuristic_7.solution
+    ./test_cases/q7/food_heuristic_7.test
+    ./test_cases/q7/food_heuristic_8.solution
+    ./test_cases/q7/food_heuristic_8.test
+    ./test_cases/q7/food_heuristic_9.solution
+    ./test_cases/q7/food_heuristic_9.test
+    ./test_cases/q7/food_heuristic_grade_tricky.solution
+    ./test_cases/q7/food_heuristic_grade_tricky.test
+    ./test_cases/q8/closest_dot_1.solution
+    ./test_cases/q8/closest_dot_1.test
+    ./test_cases/q8/closest_dot_10.solution
+    ./test_cases/q8/closest_dot_10.test
+    ./test_cases/q8/closest_dot_11.solution
+    ./test_cases/q8/closest_dot_11.test
+    ./test_cases/q8/closest_dot_12.solution
+    ./test_cases/q8/closest_dot_12.test
+    ./test_cases/q8/closest_dot_13.solution
+    ./test_cases/q8/closest_dot_13.test
+    ./test_cases/q8/closest_dot_2.solution
+    ./test_cases/q8/closest_dot_2.test
+    ./test_cases/q8/closest_dot_3.solution
+    ./test_cases/q8/closest_dot_3.test
+    ./test_cases/q8/closest_dot_4.solution
+    ./test_cases/q8/closest_dot_4.test
+    ./test_cases/q8/closest_dot_5.solution
+    ./test_cases/q8/closest_dot_5.test
+    ./test_cases/q8/closest_dot_6.solution
+    ./test_cases/q8/closest_dot_6.test
+    ./test_cases/q8/closest_dot_7.solution
+    ./test_cases/q8/closest_dot_7.test
+    ./test_cases/q8/closest_dot_8.solution
+    ./test_cases/q8/closest_dot_8.test
+    ./test_cases/q8/closest_dot_9.solution
+    ./test_cases/q8/closest_dot_9.test
+    ./test_cases/q8/CONFIG
+
+Found no modifications. You're good.
+Running autogarder......
+
+Done grading, logging output......
+
+------------------------------------------------------------
+Starting on 3-7 at 20:58:43
+
+Question q1
+===========
+*** Method not implemented: depthFirstSearch at line 90 of search.py
+*** FAIL: Terminated with a string exception.
+
+### Question q1: 0/3 ###
+
+
+Question q2
+===========
+*** Method not implemented: breadthFirstSearch at line 95 of search.py
+*** FAIL: Terminated with a string exception.
+
+### Question q2: 0/3 ###
+
+
+Question q3
+===========
+*** Method not implemented: uniformCostSearch at line 100 of search.py
+*** FAIL: Terminated with a string exception.
+
+### Question q3: 0/3 ###
+
+
+Question q4
+===========
+*** Method not implemented: aStarSearch at line 112 of search.py
+*** FAIL: Terminated with a string exception.
+
+### Question q4: 0/3 ###
+
+
+Question q5
+===========
+*** NOTE: Make sure to complete Question q2 before working on Question q5,
+*** because Question q5 builds upon your answer for Question q2.
+
+
+Question q6
+===========
+*** NOTE: Make sure to complete Question q4 before working on Question q6,
+*** because Question q6 builds upon your answer for Question q4.
+
+
+Question q7
+===========
+*** NOTE: Make sure to complete Question q4 before working on Question q7,
+*** because Question q7 builds upon your answer for Question q4.
+
+
+Question q8
+===========
+[SearchAgent] using function depthFirstSearch
+[SearchAgent] using problem type PositionSearchProblem
+*** Method not implemented: findPathToClosestDot at line 492 of searchAgents.py
+*** FAIL: Terminated with a string exception.
+
+### Question q8: 0/3 ###
+
+
+Finished at 20:58:43
+
+Provisional grades
+==================
+Question q1: 0/3
+Question q2: 0/3
+Question q3: 0/3
+Question q4: 0/3
+Question q5: 0/3
+Question q6: 0/3
+Question q7: 0/4
+Question q8: 0/3
+------------------
+Total: 0/25
+
+Your grades are NOT yet registered.  To register your grades, make sure
+to follow your instructor's guidelines to receive credit on your project.
+
+------------------------------------------------------------
+
+Here is your grade:
+------------------------------------------------------------
+Question q1:.............................. 0/3
+Question q2:.............................. 0/3
+Question q3:.............................. 0/3
+Question q4:.............................. 0/3
+Question q5:.............................. 0/3
+Question q6:.............................. 0/3
+Question q7:.............................. 0/4
+Question q8:.............................. 0/3
+------------------------------------------------------------
+Your final score:......................... 0/25
+
+Finish writing token file: grade/search.token
+
+Your grade is not yet registered. Please submit the log and token files under 
+grade directory together with all modified files to record the grade.
