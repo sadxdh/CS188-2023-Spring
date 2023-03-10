@@ -27,13 +27,13 @@ class SearchProblem:
     You do not need to change anything in this class, ever.
     """
 
-    def getStartState(self):
+    def getStartState(self):                    #chu    shi     zahugn  tai
         """
         Returns the start state for the search problem.
         """
         util.raiseNotDefined()
 
-    def isGoalState(self, state):
+    def isGoalState(self, state):               #mu     biao    zahung  tai
         """
           state: Search state
 
@@ -41,8 +41,8 @@ class SearchProblem:
         """
         util.raiseNotDefined()
 
-    def getSuccessors(self, state):
-        """
+    def getSuccessors(self, state):                 # zhuang    tai     xin     xi   (xin   jie dian , xing dong ,chang     du)
+        """                                                                    
           state: Search state
 
         For a given state, this should return a list of triples, (successor,
@@ -52,7 +52,7 @@ class SearchProblem:
         """
         util.raiseNotDefined()
 
-    def getCostOfActions(self, actions):
+    def getCostOfActions(self, actions):                #zong xing dong 
         """
          actions: A list of actions to take
 
@@ -62,7 +62,7 @@ class SearchProblem:
         util.raiseNotDefined()
 
 
-def tinyMazeSearch(problem):
+def tinyMazeSearch(problem):                #xing jing dang xiang
     """
     Returns a sequence of moves that solves tinyMaze.  For any other maze, the
     sequence of moves will be incorrect, so only use this for tinyMaze.
@@ -92,6 +92,27 @@ def depthFirstSearch(problem: SearchProblem):
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
+    st =problem.getStartState()             #huo qu chu shi zhuan tai 
+
+    readystates=[]                                      #yi jing sou suo guo de jie dian 
+
+    states=util.Queue()                             #jian li sou suo shu
+    states.push((st,[]))
+
+    while not states.isEmpty():                 #bian li sou suo shu 
+        state,action = states.pop()
+
+        if problem.isGoalState(state):                           #zhao dao mu biao zhuang tai fan hui xing dong 
+                    return action            
+        if state not in readystates:                
+            readystates.append(state)
+            for nextstate,nextaction,costlen in problem.getSuccessors(state):                               # xin jie dian         zhuang tai ,xing dong ,chang du     zeng jia 
+                if nextstate not in readystates:
+                    nexaction = action + [nextaction]                                                                                           #xia yi zhaung tai bu zai    yizhi zhaung tai li ,xinwen   juli  zeng  jia
+                    states.push((nextstate,nexaction))
+
+    return action
+    
     util.raiseNotDefined()
 
 def uniformCostSearch(problem: SearchProblem):
