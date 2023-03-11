@@ -130,7 +130,7 @@ class FixedRandom:
  Data structures useful for implementing SearchAgents
 """
 
-class Stack:
+class Stack:#堆栈
     "A container with a last-in-first-out (LIFO) queuing policy."
     def __init__(self):
         self.list = []
@@ -147,7 +147,7 @@ class Stack:
         "Returns true if the stack is empty"
         return len(self.list) == 0
 
-class Queue:
+class Queue:#队列
     "A container with a first-in-first-out (FIFO) queuing policy."
     def __init__(self):
         self.list = []
@@ -445,13 +445,12 @@ class Counter(dict):
             addend[key] = -1 * y[key]
         return addend
 
-def raiseNotDefined():
-    fileName = inspect.stack()[1][1]
-    line = inspect.stack()[1][2]
-    method = inspect.stack()[1][3]
-
+def raiseNotDefined():                  #返回状态信息
+    fileName = inspect.stack()[1][1]    #inspect库stack方法 获取当前、上级代码方法名、modole名
+    line = inspect.stack()[1][2]        #界线
+    method = inspect.stack()[1][3]      #使用方法
     print("*** Method not implemented: %s at line %s of %s" % (method, line, fileName))
-    sys.exit(1)
+    sys.exit(1)                         #代码出现问题时退出
 
 def normalize(vectorOrCounter):
     """
