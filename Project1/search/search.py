@@ -89,21 +89,6 @@ def depthFirstSearch(problem: SearchProblem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    from searchAgents import PositionSearchProblem
-    from pacman import GameState
-    # from searchAgents import SearchAgent
-    # wall location, startState, cost
-    position = PositionSearchProblem(problem, GameState)
-    state = position.getStartState
-
-    visiteddict = position._visited  # dict status is visited
-    # visitedlist = position._visitedlist  # dict status is visited list
-    # isexpand = position._expanded  # the num of expended status
-
-    import util
-    stack = util.Stack
-
-    successor = position.getSuccessors(state=state)
 
 
 def breadthFirstSearch(problem: SearchProblem):
@@ -131,38 +116,27 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     "*** YOUR CODE HERE ***"
     from searchAgents import PositionSearchProblem
     from searchAgents import SearchAgent
-    from pacman import GameState
-    from game import Grid
-    from game import Configuration
-    from game import AgentState
-    from game import Agent
     import util
 
-    position = PositionSearchProblem(problem, gameState=GameState)
-    start = position.getStartState  # start position
-    state = start
-    goal = position.goal
-    curstate = GameState.getPacmanState()
-    pos, direct = curstate[0], curstate[1]
+    position = PositionSearchProblem(problem)
+    state = position.getStartState  # start position
+    if position.isGoalState(state):
+        return SearchAgent.getAction(state)
     lockStack = util.Stack
     lockStack.push(state)
-    while (pos != goal):
-        su = GameState.generateSuccessor(pos, direct)
-        for i in su:
-            if (i not in lockStack):  # 不在表中
-                .
-                .
-                .
-
-        # 关键步骤　找出min G(n)表示的是从起始节点到gooal节点的距离代价。
-        su.sort(key=getKeyforSort)
-        state = su.pop(0)  # get min node
-        lockStack.append(state)
-    result = []                      # 准备输出结果
-    while (state.father != None):    # 当父节点不为空时
-        result.append(state.father)  # 追加父节点
-        state = state.father               # 当前节点改为父节点
-    result.append(state)   # 最后添加初始节点
+    openlist = []
+    while (not position.isGoalState(state)):  # 　没有到达终点
+        successor = position.getSuccessors(state)
+        if len(successor) != 0:
+            for su in successor:
+                g = position.getCostOfActions(su[1])
+                h = SearchProblem.manhattanHeuristic(position, problem, info=0)
+                openlist.append((su, g+h))
+            openlist.sort(lambda x: x[1])  # [(state,action,cost),(),()]
+            # 找到ｆ最小的那一个 direction putin
+            state = openlist[0][0]
+            lockStack.push(openlist[0])
+    result = [i[1]for i in lockStack]  # 准备输出结果
     return result           # 返回路径列表
 
 
