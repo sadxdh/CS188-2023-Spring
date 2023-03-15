@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -18,6 +18,7 @@ Pacman agents (in searchAgents.py).
 """
 import game
 import util
+
 
 class SearchProblem:
     """
@@ -75,7 +76,8 @@ def tinyMazeSearch(problem):
     from game import Directions
     s = Directions.SOUTH
     w = Directions.WEST
-    return  [s, s, w, s, w, w, s, w]
+    return [s, s, w, s, w, w, s, w]
+
 
 def depthFirstSearch(problem: SearchProblem):
     """
@@ -91,7 +93,6 @@ def depthFirstSearch(problem: SearchProblem):
     print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
-
     start_states = problem.getStartState()  #获取初始状态
     end_states = []                         #收集走过节点
     states = util.Stack()                   #调用栈方法设置搜索树
@@ -107,7 +108,6 @@ def depthFirstSearch(problem: SearchProblem):
                 states.push((x,actions + [y]))  #将当前状态以及下一步搜索方向传递到搜索树
             start_states = x                #当前状态作为下一次循环的初始状态
     return actions + [y]
-    util.raiseNotDefined()
 
 
 
@@ -116,10 +116,12 @@ def breadthFirstSearch(problem: SearchProblem):
     "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
 
+
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
+
 
 def nullHeuristic(state, problem=None):
     """
@@ -128,10 +130,34 @@ def nullHeuristic(state, problem=None):
     """
     return 0
 
+
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    from searchAgents import PositionSearchProblem
+    from searchAgents import SearchAgent
+    import util
+
+    position = PositionSearchProblem(problem)
+    state = position.getStartState  # start position
+    if position.isGoalState(state):
+        return SearchAgent.getAction(state)
+    lockStack = util.Stack
+    lockStack.push(state)
+    openlist = []
+    while (not position.isGoalState(state)):  # 　没有到达终点
+        successor = position.getSuccessors(state)
+        if len(successor) != 0:
+            for su in successor:
+                g = position.getCostOfActions(su[1])
+                h = SearchProblem.manhattanHeuristic(position, problem, info=0)
+                openlist.append((su, g+h))
+            openlist.sort(lambda x: x[1])  # [(state,action,cost),(),()]
+            # 找到ｆ最小的那一个 direction putin
+            state = openlist[0][0]
+            lockStack.push(openlist[0])
+    result = [i[1]for i in lockStack]  # 准备输出结果
+    return result           # 返回路径列表
 
 
 # Abbreviations
