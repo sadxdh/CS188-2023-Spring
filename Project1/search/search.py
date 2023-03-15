@@ -170,28 +170,28 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    startNode = problem.getStartState()
-    startPriority = heuristic(startNode, problem) + 0
-    if problem.isGoalState(startNode):
+    startNode = problem.getStartState() # 获取当前状态
+    startPriority = heuristic(startNode, problem) + 0   # 计算距离函数
+    if problem.isGoalState(startNode):          # 判断是否终点就是起点
         return []
     
-    myQueue = util.PriorityQueue()
-    visitedNode = []
-    myQueue.push((startNode, [], 0), startPriority)
+    myQueue = util.PriorityQueue()          # 优先队列
+    visitedNode = []                        # 记录已经访问过的位置
+    myQueue.push((startNode, [], 0), startPriority)  # 添加开始位置和距离
     
-    while not myQueue.isEmpty():
-        currentNode, action, preCost = myQueue.pop()
-        if not (currentNode in visitedNode):
-            visitedNode.append(currentNode)
+    while not myQueue.isEmpty():        # 如果优先队列不为空
+        currentNode, action, preCost = myQueue.pop()    # 记录当前位置，行为，cost
+        if not (currentNode in visitedNode):    # 如果当前节点未访问过
+            visitedNode.append(currentNode)         # 将当前节点添加到已访问节点列表
             
-            if problem.isGoalState(currentNode):
+            if problem.isGoalState(currentNode):        # 如果是终点，返回行为
                 return action
         
-            for nextNode, nextAction, nextCost in problem.getSuccessors(currentNode):
-                newAction = action + [nextAction]
-                newCost = problem.getCostOfActions(newAction)
-                newPriority = newCost + heuristic(nextNode, problem)
-                myQueue.push((nextNode, newAction, newCost), newPriority)  
+            for nextNode, nextAction, nextCost in problem.getSuccessors(currentNode):   # 遍历当前节点的后继函数
+                newAction = action + [nextAction]                       # 
+                newCost = problem.getCostOfActions(newAction)               # 获取新的节点的距离
+                newPriority = newCost + heuristic(nextNode, problem)    # 获取后继节点中的优先级
+                myQueue.push((nextNode, newAction, newCost), newPriority)  # 将后继节点添加到优先队列
     util.raiseNotDefined()
 
 
