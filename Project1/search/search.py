@@ -89,17 +89,73 @@ def depthFirstSearch(problem: SearchProblem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
+    start_states = problem.getStartState()  #获取初始状态
+    end_states = []                         #收集走过节点
+    states = util.Stack()                   #调用栈方法设置搜索树
+    states.push((start_states,[]))          #将当前状态和下一状态集合收集
+    while states.isEmpty() == 0 and problem.isGoalState(start_states) == False:   #判断当前状态是否处于目标状态或不可执行状态
+        state,actions = states.pop()        #删除末状态并传递给state和actions
+        end_states.append(state)            #动作列表中添加当前状态
+        Successors = problem.getSuccessors(state)   #实例化当前的状态、动作、路径
+        for stated in Successors:
+            x = stated[0]                   #获取当前状态
+            y = stated[1]                   #获取当前动作
+            if x not in end_states:         #判断当前状态是否已经搜索过
+                states.push((x,actions + [y]))  #将当前状态以及下一步搜索方向传递到搜索树
+            start_states = x                #当前状态作为下一次循环的初始状态
+    return actions + [y]
 
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
+    st =problem.getStartState()             # huo qu chu shi zhuan tai 
+
+    readystates=[]                   #yi jing sou suo guo de jie dian 
+
+    states=util.Queue()           #jian li sou suo shu
+    states.push((st,[]))
+
+    while not states.isEmpty():    #bian li sou suo shu 
+        state,action = states.pop()
+
+        if problem.isGoalState(state):      #zhao dao mu biao zhuang tai fan hui xing dong 
+                    return action            
+        if state not in readystates:                
+            readystates.append(state)
+            for nextstate,nextaction,costlen in problem.getSuccessors(state):  # xin jie dian         zhuang tai ,xing dong ,chang du     zeng jia 
+                if nextstate not in readystates:
+                    nexaction = action + [nextaction]       #xia yi zhaung tai bu zai    yizhi zhaung tai li ,xinwen   juli  zeng  jia
+                    states.push((nextstate,nexaction))
+
+    return action
+    
     util.raiseNotDefined()
 
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
+    startNode = problem.getStartState()
+    if problem.isGoalState(startNode):
+        return []
+    
+    myCostQueue = util.PriorityQueue()
+    visitedNode = []
+    myCostQueue.push((startNode, []), 0)
+    
+    while not myCostQueue.isEmpty():
+        currentNode, action = myCostQueue.pop()
+        if not (currentNode in visitedNode):
+            visitedNode.append(currentNode)
+            
+            if problem.isGoalState(currentNode):
+                return action
+        
+            for nextNode, nextAction, cost in problem.getSuccessors(currentNode):
+                newAction = action + [nextAction]
+                newCost = problem.getCostOfActions(newAction)
+                myCostQueue.push((nextNode, newAction), newCost)  
     util.raiseNotDefined()
 
 
@@ -114,30 +170,29 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    from searchAgents import PositionSearchProblem
-    from searchAgents import SearchAgent
-    import util
-
-    position = PositionSearchProblem(problem)
-    state = position.getStartState  # start position
-    if position.isGoalState(state):
-        return SearchAgent.getAction(state)
-    lockStack = util.Stack
-    lockStack.push(state)
-    openlist = []
-    while (not position.isGoalState(state)):  # 　没有到达终点
-        successor = position.getSuccessors(state)
-        if len(successor) != 0:
-            for su in successor:
-                g = position.getCostOfActions(su[1])
-                h = SearchProblem.manhattanHeuristic(position, problem, info=0)
-                openlist.append((su, g+h))
-            openlist.sort(lambda x: x[1])  # [(state,action,cost),(),()]
-            # 找到ｆ最小的那一个 direction putin
-            state = openlist[0][0]
-            lockStack.push(openlist[0])
-    result = [i[1]for i in lockStack]  # 准备输出结果
-    return result           # 返回路径列表
+    startNode = problem.getStartState()
+    startPriority = heuristic(startNode, problem) + 0
+    if problem.isGoalState(startNode):
+        return []
+    
+    myQueue = util.PriorityQueue()
+    visitedNode = []
+    myQueue.push((startNode, [], 0), startPriority)
+    
+    while not myQueue.isEmpty():
+        currentNode, action, preCost = myQueue.pop()
+        if not (currentNode in visitedNode):
+            visitedNode.append(currentNode)
+            
+            if problem.isGoalState(currentNode):
+                return action
+        
+            for nextNode, nextAction, nextCost in problem.getSuccessors(currentNode):
+                newAction = action + [nextAction]
+                newCost = problem.getCostOfActions(newAction)
+                newPriority = newCost + heuristic(nextNode, problem)
+                myQueue.push((nextNode, newAction, newCost), newPriority)  
+    util.raiseNotDefined()
 
 
 # Abbreviations
