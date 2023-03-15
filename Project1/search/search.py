@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-#
+# 
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -16,9 +16,8 @@
 In search.py, you will implement generic search algorithms which are called by
 Pacman agents (in searchAgents.py).
 """
-import game
-import util
 
+import util
 
 class SearchProblem:
     """
@@ -28,37 +27,32 @@ class SearchProblem:
     You do not need to change anything in this class, ever.
     """
 
-    def getStartState(self):        #获取初始位置
+    def getStartState(self):
         """
         Returns the start state for the search problem.
         """
         util.raiseNotDefined()
 
-    def isGoalState(self, state):   #目标状态:能否继续当前行进方向
+    def isGoalState(self, state):
         """
           state: Search state
-        Returns True if and only if the state is a valid goal state.
 
-        状态：搜索状态
-        当且仅当状态是有效的目标状态时，返回True。
+        Returns True if and only if the state is a valid goal state.
         """
         util.raiseNotDefined()
 
-    def getSuccessors(self, state): #返回（当前状态，动作，路径大小）
+    def getSuccessors(self, state):
         """
           state: Search state
+
         For a given state, this should return a list of triples, (successor,
         action, stepCost), where 'successor' is a successor to the current
         state, 'action' is the action required to get there, and 'stepCost' is
         the incremental cost of expanding to that successor.
-
-        状态：搜索状态
-        对于给定的状态，这应该返回一个三元组列表，action，stepCost），其中“继任者”是当
-        前的继任者state，“action”是到达目的地所需的操作，“stepCost”是扩大到继任者的增量成本。
         """
         util.raiseNotDefined()
 
-    def getCostOfActions(self, actions):    #所有行进路线
+    def getCostOfActions(self, actions):
         """
          actions: A list of actions to take
 
@@ -76,8 +70,7 @@ def tinyMazeSearch(problem):
     from game import Directions
     s = Directions.SOUTH
     w = Directions.WEST
-    return [s, s, w, s, w, w, s, w]
-
+    return  [s, s, w, s, w, w, s, w]
 
 def depthFirstSearch(problem: SearchProblem):
     """
@@ -93,35 +86,32 @@ def depthFirstSearch(problem: SearchProblem):
     print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
-    start_states = problem.getStartState()  #获取初始状态
-    end_states = []                         #收集走过节点
-    states = util.Stack()                   #调用栈方法设置搜索树
-    states.push((start_states,[]))          #将当前状态和下一状态集合收集
-    while states.isEmpty() == 0 and problem.isGoalState(start_states) == False:   #判断当前状态是否处于目标状态或不可执行状态
-        state,actions = states.pop()        #删除末状态并传递给state和actions
-        end_states.append(state)            #动作列表中添加当前状态
-        Successors = problem.getSuccessors(state)   #实例化当前的状态、动作、路径
-        for stated in Successors:
-            x = stated[0]                   #获取当前状态
-            y = stated[1]                   #获取当前动作
-            if x not in end_states:         #判断当前状态是否已经搜索过
-                states.push((x,actions + [y]))  #将当前状态以及下一步搜索方向传递到搜索树
-            start_states = x                #当前状态作为下一次循环的初始状态
-    return actions + [y]
-
-
+    "*** YOUR CODE HERE ***"
+    nowstates = util.Stack()                                                #now states
+    everstates = []                                                                   #ever states
+    nowstates.push((problem.getStartState(), []))  #insert start state
+    while not nowstates.isEmpty():                               #if not none continue
+        nownode, actions = nowstates.pop()              
+        if problem.isGoalState(nownode):                    #if already in goal state return actions
+            return actions
+        if nownode not in everstates:                               #if now node not in ever node,continue
+            successors = problem.getSuccessors(nownode) #goal states successors
+            everstates.append(nownode)                          #ever states insert into now node
+            for successor, action, stepCost in successors:    #push successors to
+                if successor not in everstates:                       #if successor not in ever states,contiue
+                    nowstates.push((successor, actions + [action]))#now states insert 
+ 
+    util.raiseNotDefined()
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
 
-
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
-
 
 def nullHeuristic(state, problem=None):
     """
@@ -130,34 +120,10 @@ def nullHeuristic(state, problem=None):
     """
     return 0
 
-
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    from searchAgents import PositionSearchProblem
-    from searchAgents import SearchAgent
-    import util
-
-    position = PositionSearchProblem(problem)
-    state = position.getStartState  # start position
-    if position.isGoalState(state):
-        return SearchAgent.getAction(state)
-    lockStack = util.Stack
-    lockStack.push(state)
-    openlist = []
-    while (not position.isGoalState(state)):  # 　没有到达终点
-        successor = position.getSuccessors(state)
-        if len(successor) != 0:
-            for su in successor:
-                g = position.getCostOfActions(su[1])
-                h = SearchProblem.manhattanHeuristic(position, problem, info=0)
-                openlist.append((su, g+h))
-            openlist.sort(lambda x: x[1])  # [(state,action,cost),(),()]
-            # 找到ｆ最小的那一个 direction putin
-            state = openlist[0][0]
-            lockStack.push(openlist[0])
-    result = [i[1]for i in lockStack]  # 准备输出结果
-    return result           # 返回路径列表
+    util.raiseNotDefined()
 
 
 # Abbreviations
