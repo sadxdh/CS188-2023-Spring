@@ -89,21 +89,21 @@ def depthFirstSearch(problem: SearchProblem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    start_states = problem.getStartState()  #获取初始状态
-    end_states = []                         #收集走过节点
-    states = util.Stack()                   #调用栈方法设置搜索树
-    states.push((start_states,[]))          #将当前状态和下一状态集合收集
-    while states.isEmpty() == 0 and problem.isGoalState(start_states) == False:   #判断当前状态是否处于目标状态或不可执行状态
-        state,actions = states.pop()        #删除末状态并传递给state和actions
-        end_states.append(state)            #动作列表中添加当前状态
-        Successors = problem.getSuccessors(state)   #实例化当前的状态、动作、路径
-        for stated in Successors:
-            x = stated[0]                   #获取当前状态
-            y = stated[1]                   #获取当前动作
-            if x not in end_states:         #判断当前状态是否已经搜索过
-                states.push((x,actions + [y]))  #将当前状态以及下一步搜索方向传递到搜索树
-            start_states = x                #当前状态作为下一次循环的初始状态
-    return actions + [y]
+    nowstates = util.Stack()                                                #now states
+    everstates = []                                                                   #ever states
+    nowstates.push((problem.getStartState(), []))  #insert start state
+    while not nowstates.isEmpty():                               #if not none continue
+        nownode, actions = nowstates.pop()              
+        if problem.isGoalState(nownode):                    #if already in goal state return actions
+            return actions
+        if nownode not in everstates:                               #if now node not in ever node,continue
+            successors = problem.getSuccessors(nownode) #goal states successors
+            everstates.append(nownode)                          #ever states insert into now node
+            for successor, action, stepCost in successors:    #push successors to
+                if successor not in everstates:                       #if successor not in ever states,contiue
+                    nowstates.push((successor, actions + [action]))#now states insert 
+ 
+    util.raiseNotDefined()
 
 
 def breadthFirstSearch(problem: SearchProblem):
