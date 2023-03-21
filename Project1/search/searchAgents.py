@@ -81,7 +81,7 @@ class SearchAgent(Agent):
         # Get the search function from the name and heuristic
         if fn not in dir(search):
             raise AttributeError(fn + ' is not a search function in search.py.')
-        fu77nc = getattr(search, fn)
+        func = getattr(search, fn)
         if 'heuristic' not in func.__code__.co_varnames:
             print('[SearchAgent] using function ' + fn)
             self.searchFunction = func
@@ -270,7 +270,7 @@ def euclideanHeuristic(position, problem, info={}):
 # This portion is incomplete.  Time to write code!  #
 #####################################################
 
-class CornersProblem(search.getStartState):
+class CornersProblem(search.SearchProblem):
     """
     This search problem finds paths through all four corners of a layout.
 
