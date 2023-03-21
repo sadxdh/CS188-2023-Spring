@@ -103,7 +103,7 @@ def depthFirstSearch(problem: SearchProblem):
                 if successor not in everstates:                       #if successor not in ever states,contiue
                     nowstates.push((successor, actions + [action]))#now states insert 
  
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 
 def breadthFirstSearch(problem: SearchProblem):
@@ -130,7 +130,7 @@ def breadthFirstSearch(problem: SearchProblem):
 
     return action
     
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 
 def uniformCostSearch(problem: SearchProblem):
@@ -156,7 +156,7 @@ def uniformCostSearch(problem: SearchProblem):
                 newAction = action + [nextAction]
                 newCost = problem.getCostOfActions(newAction)
                 myCostQueue.push((nextNode, newAction), newCost)  
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 
 def nullHeuristic(state, problem=None):
@@ -192,7 +192,7 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
                 newCost = problem.getCostOfActions(newAction)               # 获取新的节点的距离
                 newPriority = newCost + heuristic(nextNode, problem)    # 获取后继节点中的优先级
                 myQueue.push((nextNode, newAction, newCost), newPriority)  # 将后继节点添加到优先队列
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 
 # Abbreviations
