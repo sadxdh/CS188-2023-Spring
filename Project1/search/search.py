@@ -106,6 +106,7 @@ def depthFirstSearch(problem: SearchProblem):
     # util.raiseNotDefined()
 
 
+
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
@@ -156,7 +157,9 @@ def uniformCostSearch(problem: SearchProblem):
                 newAction = action + [nextAction]
                 newCost = problem.getCostOfActions(newAction)
                 myCostQueue.push((nextNode, newAction), newCost)  
+
     # util.raiseNotDefined()
+
 
 
 def nullHeuristic(state, problem=None):
@@ -192,6 +195,7 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
                 newCost = problem.getCostOfActions(newAction)               # 获取新的节点的距离
                 newPriority = newCost + heuristic(nextNode, problem)    # 获取后继节点中的优先级
                 myQueue.push((nextNode, newAction, newCost), newPriority)  # 将后继节点添加到优先队列
+
     # util.raiseNotDefined()
 
 
