@@ -357,10 +357,6 @@ class CornersProblem(search.SearchProblem):
         self._expanded += 1 # DO NOT CHANGE
         return successors
 
-
-        self._expanded += 1  # DO NOT CHANGE
-        return successors
-
     def getCostOfActions(self, actions):
         """
         Returns the cost of a particular sequence of actions.  If those actions
