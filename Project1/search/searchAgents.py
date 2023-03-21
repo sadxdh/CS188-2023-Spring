@@ -302,7 +302,7 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
-        everycorners = (False, False, False, False)     #get every corners
+        everycorners = (True,True,True,True)     #get every corners
         startstate = (self.startingPosition, everycorners)     #get start state
         return startstate
         util.raiseNotDefined()
