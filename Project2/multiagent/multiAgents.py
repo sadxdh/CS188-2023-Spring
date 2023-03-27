@@ -24,7 +24,6 @@ class ReflexAgent(Agent):
     A reflex agent chooses an action at each choice point by examining
     its alternatives via a state evaluation function.
         反射体通过检查在每个选择点上选择一个动作 通过状态评估函数来确定备选方案。
-
     The code below is provided as a guide.  You are welcome to change
     it in any way you see fit, so long as you don't touch our method
     headers.
@@ -79,7 +78,29 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
-        return successorGameState.getScore()
+        newFood = newFood.asList()  # list
+        ghostPos = []
+        for G in newGhostStates:
+            ghostPos_ = G.getPosition()[0], G.getPosition()[1]
+            ghostPos.append(ghostPos_)
+        # ghostPos = [(G.getPosition()[0], G.getPosition()[1]) for G in newGhostStates]
+        scared = newScaredTimes[0] > 0
+        # if not new ScaredTimes new state is ghost: return lowest value
+        if not scared and (newPos in ghostPos):
+            return -1.0
+
+        if newPos in currentGameState.getFood().asList():
+            return 1
+
+        closestFoodDist = sorted(newFood, key=lambda fDist: util.manhattanDistance(fDist, newPos))
+        closestGhostDist = sorted(ghostPos, key=lambda gDist: util.manhattanDistance(gDist, newPos))
+
+        fd = lambda fDis: util.manhattanDistance(fDis, newPos)
+
+        gd = lambda gDis: util.manhattanDistance(gDis, newPos)
+
+        return 1 / fd(closestFoodDist[0]) - 1 / gd(closestGhostDist[0])
+        # return successorGameState.getScore()
 
 def scoreEvaluationFunction(currentGameState: GameState):
     """
@@ -144,7 +165,42 @@ class MinimaxAgent(MultiAgentSearchAgent):
             游戏状态。失去(): 返回游戏状态是否为失败状态
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        GhostIndex = [i for i in range(1, gameState.getNumAgents())]
+
+        def term(state, d):
+            return state.isWin() or state.isLose() or d == self.depth
+
+        def min_value(state, d, ghost):  # minimizer
+
+            if term(state, d):
+                return self.evaluationFunction(state)
+
+            v = 10000000000000000
+            for action in state.getLegalActions(ghost):
+                if ghost == GhostIndex[-1]:
+                    v = min(v, max_value(state.generateSuccessor(ghost, action), d + 1))
+                else:
+                    v = min(v, min_value(state.generateSuccessor(ghost, action), d, ghost + 1))
+            # print(v)
+            return v
+
+        def max_value(state, d):  # maximizer
+
+            if term(state, d):
+                return self.evaluationFunction(state)
+
+            v = -10000000000000000
+            for action in state.getLegalActions(0):
+                v = max(v, min_value(state.generateSuccessor(0, action), d, 1))
+            # print(v)
+            return v
+
+        res = [(action, min_value(gameState.generateSuccessor(0, action), 0, 1)) for action in
+               gameState.getLegalActions(0)]
+        res.sort(key=lambda k: k[1])
+
+        return res[-1][0]
+        # util.raiseNotDefined()
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
     """
@@ -158,7 +214,23 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             返回使用self.depth和self的极大极小操作。评价函数
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        now_value = -1e10
+        alpha = -1e10
+        beta = 1e10
+        next_PacmanAction = Directions.STOP
+
+        legal_actions = gameState.getLegalActions(0).copy()
+
+        for next_action in legal_actions:
+            nextState = gameState.generateSuccessor(0, next_action)
+
+            next_value = self.get_node_value(nextState, 0, 1, alpha, beta)
+            # same as v = max(v, value(successor))
+            if next_value > now_value:
+                now_value, next_PacmanAction = next_value, next_action
+            alpha = max(alpha, now_value)
+        return next_PacmanAction
+        # util.raiseNotDefined()
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
     """
