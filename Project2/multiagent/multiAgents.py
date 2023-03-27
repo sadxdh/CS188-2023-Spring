@@ -233,9 +233,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         # util.raiseNotDefined()
     def get_node_value(self, gameState, cur_depth=0, agent_index=0, alpha=-1e10, beta=1e10):
         """
-        Using self-defined function, alpha_value(), beta_value() to choose the most appropriate action
-        Only when it's the final state, can we get the value of each node, using the self.evaluationFunction(gameState)
-        Otherwise we just get the alpha/beta value we defined here.
+        使用自定义函数alpha_value()， beta_value()选择最合适的操作 只有当它是最终状态时，我们才能得到每个节点的值，使用self。评价函数(游戏状态) 否则我们就得到这里定义的/值。
         """
         max_party = [0, ]
         min_party = list(range(1, gameState.getNumAgents()))
@@ -256,7 +254,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             next_v = self.get_node_value(gameState.generateSuccessor(agent_index, action),
                                          cur_depth, agent_index + 1, alpha, beta)
             v = max(v, next_v)
-            if v > beta:  # next_agent in which party
+            if v > beta:  # Next_agent所属方
                 return v
             alpha = max(alpha, v)
             # print("alpha>> ", alpha)
@@ -264,7 +262,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
 
     def beta_value(self, gameState, cur_depth, agent_index, alpha=-1e10, beta=1e10):
         """
-        min_party, search for minimums
+        Min_party，搜索最小值
         """
         v = 1e10
         legal_actions = gameState.getLegalActions(agent_index)
@@ -272,15 +270,15 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             if agent_index == gameState.getNumAgents() - 1:
                 next_v = self.get_node_value(gameState.generateSuccessor(agent_index, action),
                                              cur_depth + 1, 0, alpha, beta)
-                v = min(v, next_v)  # begin next depth
+                v = min(v, next_v)  # 开始下一个深度
                 if v < alpha:
                     # print("pruning in beta_value")
                     return v
             else:
                 next_v = self.get_node_value(gameState.generateSuccessor(agent_index, action),
                                              cur_depth, agent_index + 1, alpha, beta)
-                v = min(v, next_v)  # begin next depth
-                if v < alpha:  # next agent goes on at the same depth
+                v = min(v, next_v)  # 开始下一个深度
+                if v < alpha:  # 下一个agent在同样的深度继续
                     # print("pruning in beta_value")
                     return v
             beta = min(beta, v)
