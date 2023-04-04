@@ -290,6 +290,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
       Your expectimax agent (question 4)
         你的expectimax代理(问题4)
     """
+    INF = 100000.0
 
     def getAction(self, gameState: GameState):
         """
@@ -300,7 +301,47 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
             所有幽灵都应该被建模为从它们的幽灵中随机选择 法律行动。
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        maxValue = -self.INF
+        maxAction = Directions.STOP
+
+        for action in gameState.getLegalActions(agentIndex=0):
+            sucState = gameState.generateSuccessor(action=action, agentIndex=0)
+            sucValue = self.expNode(sucState, currentDepth=0, agentIndex=1)
+            if sucValue > maxValue:
+                maxValue = sucValue
+                maxAction = action
+
+        return maxAction
+
+    def maxNode(self, gameState, currentDepth):
+        if currentDepth == self.depth or gameState.isLose() or gameState.isWin():
+            return self.evaluationFunction(gameState)
+
+        maxValue = -self.INF
+        for action in gameState.getLegalActions(agentIndex=0):
+            sucState = gameState.generateSuccessor(action=action, agentIndex=0)
+            sucValue = self.expNode(sucState, currentDepth=currentDepth, agentIndex=1)
+            if sucValue > maxValue:
+                maxValue = sucValue
+        return maxValue
+
+    def expNode(self, gameState, currentDepth, agentIndex):
+        if currentDepth == self.depth or gameState.isLose() or gameState.isWin():
+            return self.evaluationFunction(gameState)
+
+        numAction = len(gameState.getLegalActions(agentIndex=agentIndex))
+        totalValue = 0.0
+        numAgent = gameState.getNumAgents()
+        for action in gameState.getLegalActions(agentIndex=agentIndex):
+            sucState = gameState.generateSuccessor(agentIndex=agentIndex, action=action)
+            if agentIndex == numAgent - 1:
+                sucValue = self.maxNode(sucState, currentDepth=currentDepth + 1)
+            else:
+                sucValue = self.expNode(sucState, currentDepth=currentDepth, agentIndex=agentIndex + 1)
+            totalValue += sucValue
+
+        return totalValue / numAction
+        # util.raiseNotDefined()
 
 def betterEvaluationFunction(currentGameState: GameState):
     """
@@ -311,7 +352,39 @@ def betterEvaluationFunction(currentGameState: GameState):
         D e s c r I p t o n: <在这里写点什么，让我们知道你做了什么>
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    newPos = currentGameState.getPacmanPosition()
+    newFood = currentGameState.getFood()
+    newGhostStates = currentGameState.getGhostStates()
+
+    # Consts
+    INF = 100000000.0  # Infinite value
+    WEIGHT_FOOD = 10.0  # Food base value
+    WEIGHT_GHOST = -10.0  # Ghost base value
+    WEIGHT_SCARED_GHOST = 100.0  # Scared ghost base value
+
+    # Base on gameState.getScore()
+    score = currentGameState.getScore()
+
+    # Evaluate the distance to the closest food
+    distancesToFoodList = [util.manhattanDistance(newPos, foodPos) for foodPos in newFood.asList()]
+    if len(distancesToFoodList) > 0:
+        score += WEIGHT_FOOD / min(distancesToFoodList)
+    else:
+        score += WEIGHT_FOOD
+
+    # Evaluate the distance to ghosts
+    for ghost in newGhostStates:
+        distance = manhattanDistance(newPos, ghost.getPosition())
+        if distance > 0:
+            if ghost.scaredTimer > 0:  # If scared, add points
+                score += WEIGHT_SCARED_GHOST / distance
+            else:  # If not, decrease points
+                score += WEIGHT_GHOST / distance
+        else:
+            return -INF  # Pacman is dead at this point
+
+    return score
+    # util.raiseNotDefined()
 
 # Abbreviation
 better = betterEvaluationFunction
