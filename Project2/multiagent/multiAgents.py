@@ -150,13 +150,13 @@ class MinimaxAgent(MultiAgentSearchAgent):
         gameState.getLegalActions(agentIndex):
         Returns a list of legal actions for an agent
         agentIndex=0 means Pacman, ghosts are >= 1
-            游戏状态。获得法律诉讼(代理索引): 返回代理的法律操作列表 Agent index=0表示吃豆人，ghosts = >= 1
+            游戏状态。获得LegalActions(agentIndex): 返回agent的法律操作列表 Agent index=0表示吃豆人，ghosts >= 1
         gameState.generateSuccessor(agentIndex, action):
         Returns the successor game state after an agent takes an action
-            游戏状态。生成继承人(代理索引、动作): 返回代理执行操作后的后续游戏状态
+            游戏状态。生成继承人(agentIndex、动作): 返回agent执行操作后的后续游戏状态
         gameState.getNumAgents():
         Returns the total number of agents in the game
-            游戏状态。获取num agents(): 返回游戏中代理的总数
+            游戏状态。获取num agents(): 返回游戏中agent的总数
         gameState.isWin():
         Returns whether or not the game state is a winning state
             游戏状态。是赢得(): 返回游戏状态是否是获胜状态
@@ -165,26 +165,26 @@ class MinimaxAgent(MultiAgentSearchAgent):
             游戏状态。失去(): 返回游戏状态是否为失败状态
         """
         "*** YOUR CODE HERE ***"
-        GhostIndex = [i for i in range(1, gameState.getNumAgents())]
+        GhostIndex = [i for i in range(1, gameState.getNumAgents())] # 获取传入参数的鬼魂个数
 
         def term(state, d):
-            return state.isWin() or state.isLose() or d == self.depth
+            return state.isWin() or state.isLose() or d == self.depth # 返回游戏状态信息状态
 
-        def min_value(state, d, ghost):  # minimizer
+        def min_value(state, d, ghost):  # 最小值（状态，层数，鬼魂）
 
             if term(state, d):
-                return self.evaluationFunction(state)
+                return self.evaluationFunction(state)  # 使用self.evaluationFunction 对最小最大值树的叶子进行评分
 
-            v = 10000000000000000
-            for action in state.getLegalActions(ghost):
-                if ghost == GhostIndex[-1]:
-                    v = min(v, max_value(state.generateSuccessor(ghost, action), d + 1))
+            v = 10000000000000000 # v设置一个相对大的初始值
+            for action in state.getLegalActions(ghost): # 迭代：如果action是合法的
+                if ghost == GhostIndex[-1]: # 如果这个位置没有任何鬼魂
+                    v = min(v, max_value(state.generateSuccessor(ghost, action), d + 1)) # 继续下一层鬼魂，找出下一层合适
                 else:
-                    v = min(v, min_value(state.generateSuccessor(ghost, action), d, ghost + 1))
+                    v = min(v, min_value(state.generateSuccessor(ghost, action), d, ghost + 1)) # 如果有，就在同层继续找写一个鬼魂位置
             # print(v)
             return v
 
-        def max_value(state, d):  # maximizer
+        def max_value(state, d):  # 同理min_value
 
             if term(state, d):
                 return self.evaluationFunction(state)
@@ -196,7 +196,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
             return v
 
         res = [(action, min_value(gameState.generateSuccessor(0, action), 0, 1)) for action in
-               gameState.getLegalActions(0)]
+               gameState.getLegalActions(0)] # 返回action列表
         res.sort(key=lambda k: k[1])
 
         return res[-1][0]
