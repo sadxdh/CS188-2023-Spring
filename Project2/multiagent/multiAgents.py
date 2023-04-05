@@ -175,7 +175,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
             if term(state, d):
                 return self.evaluationFunction(state)  # 使用self.evaluationFunction 对最小最大值树的叶子进行评分
 
-            v = 10000000000000000 # v设置一个相对大的初始值
+            v = 10000000000000000 # v设置一个j大的初始值
             for action in state.getLegalActions(ghost): # 迭代：如果action是合法的
                 if ghost == GhostIndex[-1]: # 如果这个位置没有任何鬼魂
                     v = min(v, max_value(state.generateSuccessor(ghost, action), d + 1)) # 继续下一层鬼魂，找出下一层合适
@@ -357,7 +357,7 @@ def betterEvaluationFunction(currentGameState: GameState):
     newGhostStates = currentGameState.getGhostStates()
 
     # Consts
-    INF = 100000000.0  # Infinite value
+    INF = 100000000.0  # Infinite value 
     WEIGHT_FOOD = 10.0  # Food base value
     WEIGHT_GHOST = -10.0  # Ghost base value
     WEIGHT_SCARED_GHOST = 100.0  # Scared ghost base value

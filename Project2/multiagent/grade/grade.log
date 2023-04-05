@@ -1,0 +1,442 @@
+Reading autograder files......
+    ./autograder.py
+    ./testParser.py
+    ./multiagentTestClasses.py
+    ././layouts/capsuleClassic.lay
+    ././layouts/contestClassic.lay
+    ././layouts/mediumClassic.lay
+    ././layouts/minimaxClassic.lay
+    ././layouts/openClassic.lay
+    ././layouts/originalClassic.lay
+    ././layouts/powerClassic.lay
+    ././layouts/smallClassic.lay
+    ././layouts/testClassic.lay
+    ././layouts/trappedClassic.lay
+    ././layouts/trickyClassic.lay
+    ././test_cases/CONFIG
+    ././test_cases/extra/CONFIG
+    ././test_cases/extra/grade-agent.test
+    ././test_cases/q1/CONFIG
+    ././test_cases/q1/grade-agent.solution
+    ././test_cases/q1/grade-agent.test
+    ././test_cases/q2/0-eval-function-lose-states-1.solution
+    ././test_cases/q2/0-eval-function-lose-states-1.test
+    ././test_cases/q2/0-eval-function-lose-states-2.solution
+    ././test_cases/q2/0-eval-function-lose-states-2.test
+    ././test_cases/q2/0-eval-function-win-states-1.solution
+    ././test_cases/q2/0-eval-function-win-states-1.test
+    ././test_cases/q2/0-eval-function-win-states-2.solution
+    ././test_cases/q2/0-eval-function-win-states-2.test
+    ././test_cases/q2/0-lecture-6-tree.solution
+    ././test_cases/q2/0-lecture-6-tree.test
+    ././test_cases/q2/0-small-tree.solution
+    ././test_cases/q2/0-small-tree.test
+    ././test_cases/q2/1-1-minmax.solution
+    ././test_cases/q2/1-1-minmax.test
+    ././test_cases/q2/1-2-minmax.solution
+    ././test_cases/q2/1-2-minmax.test
+    ././test_cases/q2/1-3-minmax.solution
+    ././test_cases/q2/1-3-minmax.test
+    ././test_cases/q2/1-4-minmax.solution
+    ././test_cases/q2/1-4-minmax.test
+    ././test_cases/q2/1-5-minmax.solution
+    ././test_cases/q2/1-5-minmax.test
+    ././test_cases/q2/1-6-minmax.solution
+    ././test_cases/q2/1-6-minmax.test
+    ././test_cases/q2/1-7-minmax.solution
+    ././test_cases/q2/1-7-minmax.test
+    ././test_cases/q2/1-8-minmax.solution
+    ././test_cases/q2/1-8-minmax.test
+    ././test_cases/q2/2-1a-vary-depth.solution
+    ././test_cases/q2/2-1a-vary-depth.test
+    ././test_cases/q2/2-1b-vary-depth.solution
+    ././test_cases/q2/2-1b-vary-depth.test
+    ././test_cases/q2/2-2a-vary-depth.solution
+    ././test_cases/q2/2-2a-vary-depth.test
+    ././test_cases/q2/2-2b-vary-depth.solution
+    ././test_cases/q2/2-2b-vary-depth.test
+    ././test_cases/q2/2-3a-vary-depth.solution
+    ././test_cases/q2/2-3a-vary-depth.test
+    ././test_cases/q2/2-3b-vary-depth.solution
+    ././test_cases/q2/2-3b-vary-depth.test
+    ././test_cases/q2/2-4a-vary-depth.solution
+    ././test_cases/q2/2-4a-vary-depth.test
+    ././test_cases/q2/2-4b-vary-depth.solution
+    ././test_cases/q2/2-4b-vary-depth.test
+    ././test_cases/q2/2-one-ghost-3level.solution
+    ././test_cases/q2/2-one-ghost-3level.test
+    ././test_cases/q2/3-one-ghost-4level.solution
+    ././test_cases/q2/3-one-ghost-4level.test
+    ././test_cases/q2/4-two-ghosts-3level.solution
+    ././test_cases/q2/4-two-ghosts-3level.test
+    ././test_cases/q2/5-two-ghosts-4level.solution
+    ././test_cases/q2/5-two-ghosts-4level.test
+    ././test_cases/q2/6-tied-root.solution
+    ././test_cases/q2/6-tied-root.test
+    ././test_cases/q2/7-1a-check-depth-one-ghost.solution
+    ././test_cases/q2/7-1a-check-depth-one-ghost.test
+    ././test_cases/q2/7-1b-check-depth-one-ghost.solution
+    ././test_cases/q2/7-1b-check-depth-one-ghost.test
+    ././test_cases/q2/7-1c-check-depth-one-ghost.solution
+    ././test_cases/q2/7-1c-check-depth-one-ghost.test
+    ././test_cases/q2/7-2a-check-depth-two-ghosts.solution
+    ././test_cases/q2/7-2a-check-depth-two-ghosts.test
+    ././test_cases/q2/7-2b-check-depth-two-ghosts.solution
+    ././test_cases/q2/7-2b-check-depth-two-ghosts.test
+    ././test_cases/q2/7-2c-check-depth-two-ghosts.solution
+    ././test_cases/q2/7-2c-check-depth-two-ghosts.test
+    ././test_cases/q2/8-pacman-game.solution
+    ././test_cases/q2/8-pacman-game.test
+    ././test_cases/q2/CONFIG
+    ././test_cases/q3/0-eval-function-lose-states-1.solution
+    ././test_cases/q3/0-eval-function-lose-states-1.test
+    ././test_cases/q3/0-eval-function-lose-states-2.solution
+    ././test_cases/q3/0-eval-function-lose-states-2.test
+    ././test_cases/q3/0-eval-function-win-states-1.solution
+    ././test_cases/q3/0-eval-function-win-states-1.test
+    ././test_cases/q3/0-eval-function-win-states-2.solution
+    ././test_cases/q3/0-eval-function-win-states-2.test
+    ././test_cases/q3/0-lecture-6-tree.solution
+    ././test_cases/q3/0-lecture-6-tree.test
+    ././test_cases/q3/0-small-tree.solution
+    ././test_cases/q3/0-small-tree.test
+    ././test_cases/q3/1-1-minmax.solution
+    ././test_cases/q3/1-1-minmax.test
+    ././test_cases/q3/1-2-minmax.solution
+    ././test_cases/q3/1-2-minmax.test
+    ././test_cases/q3/1-3-minmax.solution
+    ././test_cases/q3/1-3-minmax.test
+    ././test_cases/q3/1-4-minmax.solution
+    ././test_cases/q3/1-4-minmax.test
+    ././test_cases/q3/1-5-minmax.solution
+    ././test_cases/q3/1-5-minmax.test
+    ././test_cases/q3/1-6-minmax.solution
+    ././test_cases/q3/1-6-minmax.test
+    ././test_cases/q3/1-7-minmax.solution
+    ././test_cases/q3/1-7-minmax.test
+    ././test_cases/q3/1-8-minmax.solution
+    ././test_cases/q3/1-8-minmax.test
+    ././test_cases/q3/2-1a-vary-depth.solution
+    ././test_cases/q3/2-1a-vary-depth.test
+    ././test_cases/q3/2-1b-vary-depth.solution
+    ././test_cases/q3/2-1b-vary-depth.test
+    ././test_cases/q3/2-2a-vary-depth.solution
+    ././test_cases/q3/2-2a-vary-depth.test
+    ././test_cases/q3/2-2b-vary-depth.solution
+    ././test_cases/q3/2-2b-vary-depth.test
+    ././test_cases/q3/2-3a-vary-depth.solution
+    ././test_cases/q3/2-3a-vary-depth.test
+    ././test_cases/q3/2-3b-vary-depth.solution
+    ././test_cases/q3/2-3b-vary-depth.test
+    ././test_cases/q3/2-4a-vary-depth.solution
+    ././test_cases/q3/2-4a-vary-depth.test
+    ././test_cases/q3/2-4b-vary-depth.solution
+    ././test_cases/q3/2-4b-vary-depth.test
+    ././test_cases/q3/2-one-ghost-3level.solution
+    ././test_cases/q3/2-one-ghost-3level.test
+    ././test_cases/q3/3-one-ghost-4level.solution
+    ././test_cases/q3/3-one-ghost-4level.test
+    ././test_cases/q3/4-two-ghosts-3level.solution
+    ././test_cases/q3/4-two-ghosts-3level.test
+    ././test_cases/q3/5-two-ghosts-4level.solution
+    ././test_cases/q3/5-two-ghosts-4level.test
+    ././test_cases/q3/6-tied-root.solution
+    ././test_cases/q3/6-tied-root.test
+    ././test_cases/q3/7-1a-check-depth-one-ghost.solution
+    ././test_cases/q3/7-1a-check-depth-one-ghost.test
+    ././test_cases/q3/7-1b-check-depth-one-ghost.solution
+    ././test_cases/q3/7-1b-check-depth-one-ghost.test
+    ././test_cases/q3/7-1c-check-depth-one-ghost.solution
+    ././test_cases/q3/7-1c-check-depth-one-ghost.test
+    ././test_cases/q3/7-2a-check-depth-two-ghosts.solution
+    ././test_cases/q3/7-2a-check-depth-two-ghosts.test
+    ././test_cases/q3/7-2b-check-depth-two-ghosts.solution
+    ././test_cases/q3/7-2b-check-depth-two-ghosts.test
+    ././test_cases/q3/7-2c-check-depth-two-ghosts.solution
+    ././test_cases/q3/7-2c-check-depth-two-ghosts.test
+    ././test_cases/q3/8-pacman-game.solution
+    ././test_cases/q3/8-pacman-game.test
+    ././test_cases/q3/CONFIG
+    ././test_cases/q4/0-eval-function-lose-states-1.solution
+    ././test_cases/q4/0-eval-function-lose-states-1.test
+    ././test_cases/q4/0-eval-function-lose-states-2.solution
+    ././test_cases/q4/0-eval-function-lose-states-2.test
+    ././test_cases/q4/0-eval-function-win-states-1.solution
+    ././test_cases/q4/0-eval-function-win-states-1.test
+    ././test_cases/q4/0-eval-function-win-states-2.solution
+    ././test_cases/q4/0-eval-function-win-states-2.test
+    ././test_cases/q4/0-expectimax1.solution
+    ././test_cases/q4/0-expectimax1.test
+    ././test_cases/q4/1-expectimax2.solution
+    ././test_cases/q4/1-expectimax2.test
+    ././test_cases/q4/2-one-ghost-3level.solution
+    ././test_cases/q4/2-one-ghost-3level.test
+    ././test_cases/q4/3-one-ghost-4level.solution
+    ././test_cases/q4/3-one-ghost-4level.test
+    ././test_cases/q4/4-two-ghosts-3level.solution
+    ././test_cases/q4/4-two-ghosts-3level.test
+    ././test_cases/q4/5-two-ghosts-4level.solution
+    ././test_cases/q4/5-two-ghosts-4level.test
+    ././test_cases/q4/6-1a-check-depth-one-ghost.solution
+    ././test_cases/q4/6-1a-check-depth-one-ghost.test
+    ././test_cases/q4/6-1b-check-depth-one-ghost.solution
+    ././test_cases/q4/6-1b-check-depth-one-ghost.test
+    ././test_cases/q4/6-1c-check-depth-one-ghost.solution
+    ././test_cases/q4/6-1c-check-depth-one-ghost.test
+    ././test_cases/q4/6-2a-check-depth-two-ghosts.solution
+    ././test_cases/q4/6-2a-check-depth-two-ghosts.test
+    ././test_cases/q4/6-2b-check-depth-two-ghosts.solution
+    ././test_cases/q4/6-2b-check-depth-two-ghosts.test
+    ././test_cases/q4/6-2c-check-depth-two-ghosts.solution
+    ././test_cases/q4/6-2c-check-depth-two-ghosts.test
+    ././test_cases/q4/7-pacman-game.solution
+    ././test_cases/q4/7-pacman-game.test
+    ././test_cases/q4/CONFIG
+    ././test_cases/q5/CONFIG
+    ././test_cases/q5/grade-agent.solution
+    ././test_cases/q5/grade-agent.test
+
+Found no modifications. You're good.
+Running autogarder......
+
+Done grading, logging output......
+
+------------------------------------------------------------
+Starting on 4-5 at 15:55:20
+
+Question q1
+===========
+
+Pacman emerges victorious! Score: 1082
+Pacman emerges victorious! Score: 1234
+Pacman emerges victorious! Score: 1252
+Pacman emerges victorious! Score: 1189
+Pacman emerges victorious! Score: 1246
+Pacman emerges victorious! Score: 1233
+Pacman emerges victorious! Score: 1227
+Pacman emerges victorious! Score: 1234
+Pacman emerges victorious! Score: 1249
+Pacman emerges victorious! Score: 1237
+Average Score: 1218.3
+Scores:        1082.0, 1234.0, 1252.0, 1189.0, 1246.0, 1233.0, 1227.0, 1234.0, 1249.0, 1237.0
+Win Rate:      10/10 (1.00)
+Record:        Win, Win, Win, Win, Win, Win, Win, Win, Win, Win
+*** PASS: test_cases/q1/grade-agent.test (4 of 4 points)
+***     1218.3 average score (2 of 2 points)
+***         Grading scheme:
+***          < 500:  0 points
+***         >= 500:  1 points
+***         >= 1000:  2 points
+***     10 games not timed out (0 of 0 points)
+***         Grading scheme:
+***          < 10:  fail
+***         >= 10:  0 points
+***     10 wins (2 of 2 points)
+***         Grading scheme:
+***          < 1:  fail
+***         >= 1:  0 points
+***         >= 5:  1 points
+***         >= 10:  2 points
+
+### Question q1: 4/4 ###
+
+
+Question q2
+===========
+
+*** PASS: test_cases/q2/0-eval-function-lose-states-1.test
+*** PASS: test_cases/q2/0-eval-function-lose-states-2.test
+*** PASS: test_cases/q2/0-eval-function-win-states-1.test
+*** PASS: test_cases/q2/0-eval-function-win-states-2.test
+*** PASS: test_cases/q2/0-lecture-6-tree.test
+*** PASS: test_cases/q2/0-small-tree.test
+*** PASS: test_cases/q2/1-1-minmax.test
+*** PASS: test_cases/q2/1-2-minmax.test
+*** PASS: test_cases/q2/1-3-minmax.test
+*** PASS: test_cases/q2/1-4-minmax.test
+*** PASS: test_cases/q2/1-5-minmax.test
+*** PASS: test_cases/q2/1-6-minmax.test
+*** PASS: test_cases/q2/1-7-minmax.test
+*** PASS: test_cases/q2/1-8-minmax.test
+*** PASS: test_cases/q2/2-1a-vary-depth.test
+*** PASS: test_cases/q2/2-1b-vary-depth.test
+*** PASS: test_cases/q2/2-2a-vary-depth.test
+*** PASS: test_cases/q2/2-2b-vary-depth.test
+*** PASS: test_cases/q2/2-3a-vary-depth.test
+*** PASS: test_cases/q2/2-3b-vary-depth.test
+*** PASS: test_cases/q2/2-4a-vary-depth.test
+*** PASS: test_cases/q2/2-4b-vary-depth.test
+*** PASS: test_cases/q2/2-one-ghost-3level.test
+*** PASS: test_cases/q2/3-one-ghost-4level.test
+*** PASS: test_cases/q2/4-two-ghosts-3level.test
+*** PASS: test_cases/q2/5-two-ghosts-4level.test
+*** PASS: test_cases/q2/6-tied-root.test
+*** PASS: test_cases/q2/7-1a-check-depth-one-ghost.test
+*** PASS: test_cases/q2/7-1b-check-depth-one-ghost.test
+*** PASS: test_cases/q2/7-1c-check-depth-one-ghost.test
+*** PASS: test_cases/q2/7-2a-check-depth-two-ghosts.test
+*** PASS: test_cases/q2/7-2b-check-depth-two-ghosts.test
+*** PASS: test_cases/q2/7-2c-check-depth-two-ghosts.test
+*** Running MinimaxAgent on smallClassic 1 time(s).
+Pacman died! Score: 84
+Average Score: 84.0
+Scores:        84.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** Finished running MinimaxAgent on smallClassic after 1 seconds.
+*** Won 0 out of 1 games. Average score: 84.000000 ***
+*** PASS: test_cases/q2/8-pacman-game.test
+
+### Question q2: 5/5 ###
+
+
+Question q3
+===========
+
+*** PASS: test_cases/q3/0-eval-function-lose-states-1.test
+*** PASS: test_cases/q3/0-eval-function-lose-states-2.test
+*** PASS: test_cases/q3/0-eval-function-win-states-1.test
+*** PASS: test_cases/q3/0-eval-function-win-states-2.test
+*** PASS: test_cases/q3/0-lecture-6-tree.test
+*** PASS: test_cases/q3/0-small-tree.test
+*** PASS: test_cases/q3/1-1-minmax.test
+*** PASS: test_cases/q3/1-2-minmax.test
+*** PASS: test_cases/q3/1-3-minmax.test
+*** PASS: test_cases/q3/1-4-minmax.test
+*** PASS: test_cases/q3/1-5-minmax.test
+*** PASS: test_cases/q3/1-6-minmax.test
+*** PASS: test_cases/q3/1-7-minmax.test
+*** PASS: test_cases/q3/1-8-minmax.test
+*** PASS: test_cases/q3/2-1a-vary-depth.test
+*** PASS: test_cases/q3/2-1b-vary-depth.test
+*** PASS: test_cases/q3/2-2a-vary-depth.test
+*** PASS: test_cases/q3/2-2b-vary-depth.test
+*** PASS: test_cases/q3/2-3a-vary-depth.test
+*** PASS: test_cases/q3/2-3b-vary-depth.test
+*** PASS: test_cases/q3/2-4a-vary-depth.test
+*** PASS: test_cases/q3/2-4b-vary-depth.test
+*** PASS: test_cases/q3/2-one-ghost-3level.test
+*** PASS: test_cases/q3/3-one-ghost-4level.test
+*** PASS: test_cases/q3/4-two-ghosts-3level.test
+*** PASS: test_cases/q3/5-two-ghosts-4level.test
+*** PASS: test_cases/q3/6-tied-root.test
+*** PASS: test_cases/q3/7-1a-check-depth-one-ghost.test
+*** PASS: test_cases/q3/7-1b-check-depth-one-ghost.test
+*** PASS: test_cases/q3/7-1c-check-depth-one-ghost.test
+*** PASS: test_cases/q3/7-2a-check-depth-two-ghosts.test
+*** PASS: test_cases/q3/7-2b-check-depth-two-ghosts.test
+*** PASS: test_cases/q3/7-2c-check-depth-two-ghosts.test
+*** Running AlphaBetaAgent on smallClassic 1 time(s).
+Pacman died! Score: 84
+Average Score: 84.0
+Scores:        84.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** Finished running AlphaBetaAgent on smallClassic after 1 seconds.
+*** Won 0 out of 1 games. Average score: 84.000000 ***
+*** PASS: test_cases/q3/8-pacman-game.test
+
+### Question q3: 5/5 ###
+
+
+Question q4
+===========
+
+*** PASS: test_cases/q4/0-eval-function-lose-states-1.test
+*** PASS: test_cases/q4/0-eval-function-lose-states-2.test
+*** PASS: test_cases/q4/0-eval-function-win-states-1.test
+*** PASS: test_cases/q4/0-eval-function-win-states-2.test
+*** PASS: test_cases/q4/0-expectimax1.test
+*** PASS: test_cases/q4/1-expectimax2.test
+*** PASS: test_cases/q4/2-one-ghost-3level.test
+*** PASS: test_cases/q4/3-one-ghost-4level.test
+*** PASS: test_cases/q4/4-two-ghosts-3level.test
+*** PASS: test_cases/q4/5-two-ghosts-4level.test
+*** PASS: test_cases/q4/6-1a-check-depth-one-ghost.test
+*** PASS: test_cases/q4/6-1b-check-depth-one-ghost.test
+*** PASS: test_cases/q4/6-1c-check-depth-one-ghost.test
+*** PASS: test_cases/q4/6-2a-check-depth-two-ghosts.test
+*** PASS: test_cases/q4/6-2b-check-depth-two-ghosts.test
+*** PASS: test_cases/q4/6-2c-check-depth-two-ghosts.test
+*** Running ExpectimaxAgent on smallClassic 1 time(s).
+Pacman died! Score: 84
+Average Score: 84.0
+Scores:        84.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
+*** Finished running ExpectimaxAgent on smallClassic after 1 seconds.
+*** Won 0 out of 1 games. Average score: 84.000000 ***
+*** PASS: test_cases/q4/7-pacman-game.test
+
+### Question q4: 5/5 ###
+
+
+Question q5
+===========
+
+Pacman emerges victorious! Score: 1373
+Pacman emerges victorious! Score: 1339
+Pacman emerges victorious! Score: 1032
+Pacman emerges victorious! Score: 1008
+Pacman emerges victorious! Score: 1344
+Pacman emerges victorious! Score: 1357
+Pacman emerges victorious! Score: 1322
+Pacman emerges victorious! Score: 1370
+Pacman emerges victorious! Score: 1288
+Pacman emerges victorious! Score: 1372
+Average Score: 1280.5
+Scores:        1373.0, 1339.0, 1032.0, 1008.0, 1344.0, 1357.0, 1322.0, 1370.0, 1288.0, 1372.0
+Win Rate:      10/10 (1.00)
+Record:        Win, Win, Win, Win, Win, Win, Win, Win, Win, Win
+*** PASS: test_cases/q5/grade-agent.test (6 of 6 points)
+***     1280.5 average score (2 of 2 points)
+***         Grading scheme:
+***          < 500:  0 points
+***         >= 500:  1 points
+***         >= 1000:  2 points
+***     10 games not timed out (1 of 1 points)
+***         Grading scheme:
+***          < 0:  fail
+***         >= 0:  0 points
+***         >= 10:  1 points
+***     10 wins (3 of 3 points)
+***         Grading scheme:
+***          < 1:  fail
+***         >= 1:  1 points
+***         >= 5:  2 points
+***         >= 10:  3 points
+
+### Question q5: 6/6 ###
+
+
+Finished at 15:55:35
+
+Provisional grades
+==================
+Question q1: 4/4
+Question q2: 5/5
+Question q3: 5/5
+Question q4: 5/5
+Question q5: 6/6
+------------------
+Total: 25/25
+
+Your grades are NOT yet registered.  To register your grades, make sure
+to follow your instructor's guidelines to receive credit on your project.
+
+------------------------------------------------------------
+
+Here is your grade:
+------------------------------------------------------------
+Question q1:.............................. 4/4
+Question q2:.............................. 5/5
+Question q3:.............................. 5/5
+Question q4:.............................. 5/5
+Question q5:.............................. 6/6
+------------------------------------------------------------
+Your final score:......................... 25/25
+
+Finish writing token file: grade/search.token
+
+Your grade is not yet registered. Please submit the log and token files under 
+grade directory together with all modified files to record the grade.
