@@ -31,6 +31,7 @@ import mdp, util
 from learningAgents import ValueEstimationAgent
 import collections
 
+
 class ValueIterationAgent(ValueEstimationAgent):
     """
         * Please read learningAgents.py before reading this.*
@@ -40,7 +41,8 @@ class ValueIterationAgent(ValueEstimationAgent):
         for a given number of iterations using the supplied
         discount factor.
     """
-    def __init__(self, mdp: mdp.MarkovDecisionProcess, discount = 0.9, iterations = 100):
+
+    def __init__(self, mdp: mdp.MarkovDecisionProcess, discount=0.9, iterations=100):
         """
           Your value iteration agent should take an mdp on
           construction, run the indicated number of iterations
@@ -56,7 +58,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.mdp = mdp
         self.discount = discount
         self.iterations = iterations
-        self.values = util.Counter() # A Counter is a dict with default 0
+        self.values = util.Counter()  # A Counter is a dict with default 0
         self.runValueIteration()
 
     def runValueIteration(self):
@@ -71,8 +73,8 @@ class ValueIterationAgent(ValueEstimationAgent):
                 if self.mdp.isTerminal(state):
                     continue
                 # 找出所有action中QValue最大的值，并记录到next_values字典中
-                next_values[state] =max([self.getQValue(state, action)
-                                        for action in self.mdp.getPossibleActions(state)])
+                next_values[state] = max([self.getQValue(state, action)
+                                          for action in self.mdp.getPossibleActions(state)])
             # 实时更新全局value字典
             self.values = next_values.copy()
 
@@ -92,7 +94,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         # successors = [(nextState, prob),]
         successors = self.mdp.getTransitionStatesAndProbs(state, action)
         qval = 0
-        for next_state, prob in successors: # QValue = 累加（action对应reward + discount*s‘value）
+        for next_state, prob in successors:  # QValue = 累加 概率T(sas')*（action对应reward + discount*s‘value）
             qval += prob * (self.mdp.getReward(state, action, next_state)
                             + self.discount * self.getValue(next_state))
         return qval
@@ -112,7 +114,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         policy = util.Counter()
         for action in self.mdp.getPossibleActions(state):
             policy[action] = self.getQValue(state, action)
-        return policy.argMax()  # Returns the key with the highest value.（来自util.counter）
+        return policy.argMax()  # Returns the key with the highest value.（argMax来自util.counter）
         # util.raiseNotDefined()
 
     def getPolicy(self, state):
