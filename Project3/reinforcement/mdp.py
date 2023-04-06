@@ -58,10 +58,10 @@ class MarkovDecisionProcess:
 
     def isTerminal(self, state):
         """
-        Returns true if the current state is a terminal state.  By convention,
-        a terminal state has zero future rewards.  Sometimes the terminal state(s)
-        may have no possible actions.  It is also common to think of the terminal
-        state as having a self-loop action 'pass' with zero reward; the formulations
-        are equivalent.
+        Returns true if the current state is a terminal state.  By convention,如果当前状态是终端状态，则返回 true,
+        a terminal state has zero future rewards.  Sometimes the terminal state(s)一个终端状态没有未来回报。有时候终端状态
+        may have no possible actions.  It is also common to think of the terminal可能没有可能的操作
+        state as having a self-loop action 'pass' with zero reward; the formulations状态为有一个自我循环的动作‘通过’，没有奖励; 公式
+        are equivalent.是等价的。
         """
         abstract

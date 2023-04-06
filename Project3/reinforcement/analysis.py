@@ -18,6 +18,7 @@
 
 # Set the given parameters to obtain the specified policies through
 # value iteration.
+# 设置给定的参数，通过value iteration获得指定的policies。
 
 def question2a():
     """
