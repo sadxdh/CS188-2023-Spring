@@ -755,7 +755,9 @@ class JointParticleFilter(ParticleFilter):
         """
         self.particles = []
         "*** YOUR CODE HERE ***"
-        raiseNotDefined()
+        samples = list(itertools.product(self.legalPositions, repeat=self.numGhosts))
+        random.shuffle(samples)
+        self.particles = samples[0: self.numParticles]
         "*** END YOUR CODE HERE ***"
 
     def addGhostAgent(self, agent):
@@ -791,7 +793,21 @@ class JointParticleFilter(ParticleFilter):
         the DiscreteDistribution may be useful.
         """
         "*** YOUR CODE HERE ***"
-        raiseNotDefined()
+        pacman_position = gameState.getPacmanPosition()
+        ghost_states = list(itertools.product(self.legalPositions, repeat=self.numGhosts))
+        predictions = self.getBeliefDistribution()
+        for state in ghost_states:
+            for i in range(self.numGhosts):
+                jail_position = self.getJailPosition(i)
+                observation_i = observation[i]
+                ghost_position = state[i]
+                predictions[state] *= self.getObservationProb(observation_i, pacman_position, ghost_position, jail_position)
+        predictions.normalize()
+        if predictions.total() == 0:
+            self.initializeUniformly(gameState)
+        else:
+            self.particles = [predictions.sample() for _ in range(self.numParticles)]
+        # raiseNotDefined()
         "*** END YOUR CODE HERE ***"
 
     ########### ########### ###########
@@ -809,7 +825,8 @@ class JointParticleFilter(ParticleFilter):
 
             # now loop through and update each entry in newParticle...
             "*** YOUR CODE HERE ***"
-            raiseNotDefined()
+            newParticle = [self.getPositionDistribution(gameState, oldParticle, i, self.ghostAgents[i]).sample() for i in range(self.numGhosts)]
+            # raiseNotDefined()
             """*** END YOUR CODE HERE ***"""
             newParticles.append(tuple(newParticle))
         self.particles = newParticles
